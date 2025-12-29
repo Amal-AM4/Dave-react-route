@@ -11,46 +11,37 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 
+import api from "./api/posts";
+
 function App() {
   let title = "React JS Blog";
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "My First Post",
-      datetime: "July 01, 2025 11:17:34 AM",
-      body: "This is my very first post. Just testing the blog setup.",
-    },
-    {
-      id: 2,
-      title: "Learning React Basics",
-      datetime: "July 03, 2025 09:45:10 AM",
-      body: "Today I learned about components, props, and state in React.",
-    },
-    {
-      id: 3,
-      title: "Understanding useState Hook",
-      datetime: "July 05, 2025 06:30:55 PM",
-      body: "useState helps manage local component state in a clean way.",
-    },
-    {
-      id: 4,
-      title: "React Router Practice",
-      datetime: "July 07, 2025 02:15:20 PM",
-      body: "Implemented routing using react-router-dom for navigation.",
-    },
-    {
-      id: 5,
-      title: "Building a Simple Blog App",
-      datetime: "July 10, 2025 08:05:40 PM",
-      body: "Started building a simple blog application using React.",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get("/posts");
+        setPosts(response.data);
+      } catch (error) {
+        if (error.response) {
+          // not in the 200 response range
+          console.log(error.response.data);
+          console.log(error.response.satus);
+          console.log(error.response.header);
+        } else {
+          console.log(`Error: ${error.message}`);
+        }
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     const filteredResults = posts.filter(
