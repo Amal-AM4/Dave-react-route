@@ -235,6 +235,12 @@ body {
   color: royalblue;
 }
 
+.editButton {
+  margin-right: 12px;
+  background-color: gold !important;
+  color: #000 !important;
+}
+
 @media only screen and (min-width: 610px) {
   html {
     font-size: 22px;
