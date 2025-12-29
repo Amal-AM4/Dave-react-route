@@ -13,34 +13,10 @@
       "body": "Today I learned about components, props, and state in React."
     },
     {
-      "id": "3",
-      "title": "Understanding useState Hook",
-      "datetime": "July 05, 2025 06:30:55 PM",
-      "body": "useState helps manage local component state in a clean way."
-    },
-    {
-      "id": "4",
-      "title": "React Router Practice",
-      "datetime": "July 07, 2025 02:15:20 PM",
-      "body": "Implemented routing using react-router-dom for navigation."
-    },
-    {
-      "id": "5",
-      "title": "Building a Simple Blog App",
-      "datetime": "July 10, 2025 08:05:40 PM",
-      "body": "Started building a simple blog application using React."
-    },
-    {
       "id": "6",
-      "title": "fuck",
-      "datetime": "December 29, 2025 10:43:47 AM",
-      "body": "fuck youuuuuuuuuuu"
-    },
-    {
-      "id": "7",
-      "title": "fuck you again",
-      "datetime": "December 29, 2025 10:44:18 AM",
-      "body": "i will fuck your girlfriend man!!!!"
+      "title": "Test 123",
+      "datetime": "December 29, 2025 10:45:19 AM",
+      "body": "Test again new post???"
     }
   ]
 }

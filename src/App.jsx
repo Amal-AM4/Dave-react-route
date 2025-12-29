@@ -55,7 +55,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const idAssign = Number(posts[posts.length - 1].id) + 1
+    const idAssign = Number(posts[posts.length - 1].id) + 1;
     const id = posts.length ? idAssign.toString() : 1;
     const datetime = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, title: postTitle, datetime, body: postBody };
@@ -71,10 +71,15 @@ function App() {
     }
   };
 
-  const handleDelete = (id) => {
-    const postList = posts.filter((post) => post.id !== id);
-    setPosts(postList);
-    navigate("/");
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/posts/${id}`);
+      const postList = posts.filter((post) => post.id !== id);
+      setPosts(postList);
+      navigate("/");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
   };
 
   return (
