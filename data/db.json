@@ -2,15 +2,9 @@
   "posts": [
     {
       "id": "1",
-      "title": "My First Post updated version",
-      "datetime": "December 29, 2025 11:06:59 AM",
+      "title": "My First Post updated ",
+      "datetime": "December 30, 2025 11:53:57 AM",
       "body": "This is my very first post. Just testing the blog setup."
-    },
-    {
-      "id": "2",
-      "title": "Learning React Basics",
-      "datetime": "July 03, 2025 09:45:10 AM",
-      "body": "Today I learned about components, props, and state in React."
     },
     {
       "id": "6",

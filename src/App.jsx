@@ -14,6 +14,7 @@ import { format } from "date-fns";
 import api from "./api/posts";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
+import useAxiosFetch from "./hooks/useAxiosFetch";
 
 function App() {
   let title = "React JS Blog";
@@ -29,25 +30,13 @@ function App() {
 
   const { width } = useWindowSize();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await api.get("/posts");
-        setPosts(response.data);
-      } catch (error) {
-        if (error.response) {
-          // not in the 200 response range
-          console.log(error.response.data);
-          console.log(error.response.satus);
-          console.log(error.response.header);
-        } else {
-          console.log(`Error: ${error.message}`);
-        }
-      }
-    };
+  const { data, fetchError, isLoading } = useAxiosFetch(
+    "http://localhost:3500/posts"
+  );
 
-    fetchPosts();
-  }, []);
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
 
   useEffect(() => {
     const filteredResults = posts.filter(
@@ -111,7 +100,16 @@ function App() {
       <Nav search={search} setSearch={setSearch} />
 
       <Routes>
-        <Route path="/" element={<Home posts={searchResults} />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              fetchError={fetchError}
+              isLoading={isLoading}
+              posts={searchResults}
+            />
+          }
+        />
         <Route
           path="/post"
           element={
